@@ -18,3 +18,4 @@ npx cap doctor
 
 ionic cap run android -l --external
 
+chrome://inspect/#devices
