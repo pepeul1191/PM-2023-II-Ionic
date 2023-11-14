@@ -4,8 +4,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
 import { IonContent, IonRow, IonPage, IonInput, IonButton, IonLabel } from '@ionic/react';
-import axios from 'axios';
-import { BASE_URL } from '../configs/constants';
+import { validate } from '../services/user_service';
 
 const Login: React.FC = () => {
   const [user, setUser] = useState('');
@@ -14,13 +13,12 @@ const Login: React.FC = () => {
 
   const handleLogin = () => {
     //alert(`Inicio de sesión exitoso. User: ${user}, Contraseña: ${password}`);
-    axios
-      .post(`${BASE_URL}user/validate`, {user: user, password: password})
-      .then(response => {
-        console.log(JSON.parse(response.data.data));
-      })
-      .catch(error => {
-        console.error('Axios request failed:', error);
+    validate(user, password)
+      .then(data => {
+        console.log(data)
+      }).catch(
+        error => {
+          console.log(error)
       });
   };
 

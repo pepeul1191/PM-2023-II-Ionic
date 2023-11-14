@@ -1,27 +1,25 @@
 import axios from 'axios';
+import { BASE_URL } from '../configs/constants'; 
 
-/*
-export const access = (user, password) => {
+export const validate = (user: string, password: string) => {
   return new Promise((resolve, reject) => {
-    axios.post('http://192.168.1.27:3000/user/validate', {
+    const url = `${BASE_URL}user/validate`;
+    const params = {
       user: user,
       password: password
-    }, {
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    }).then(function (response) {
-      resolve(response);
-    }).catch(function (error) {
-      if(error.response.status == 404){
-        console.error('Miembro a asociar no existe en el servidor')
-      }else{
-        console.error(error.response.data);
-      }
-      reject(error.response);
-    })
-    .then(function () {
-      // todo?
-    });
+    };
+    axios.post(url, params, { maxRedirects: 0 })
+      .then(response => {
+        console.log(response.status);
+        console.log(response.data);
+        if(response.status != 200){
+          reject(response.data);  
+        }else{
+          resolve(response.data);
+        }
+      })
+      .catch(error => {
+        reject(error);
+      });
   });
-}*/
+};
