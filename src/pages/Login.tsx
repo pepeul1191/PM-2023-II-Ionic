@@ -4,13 +4,23 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
 import { IonContent, IonRow, IonPage, IonInput, IonButton, IonLabel } from '@ionic/react';
+import axios from 'axios';
 
 const Login: React.FC = () => {
   const [user, setUser] = useState('');
+  const [message, setMessage] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    alert(`Inicio de sesión exitoso. User: ${user}, Contraseña: ${password}`);
+    //alert(`Inicio de sesión exitoso. User: ${user}, Contraseña: ${password}`);
+    axios
+      .post('http://192.168.1.27:3000/user/validate', {user: user, password: password})
+      .then(response => {
+        console.log(JSON.parse(response.data.data));
+      })
+      .catch(error => {
+        console.error('Axios request failed:', error);
+      });
   };
 
   return (
