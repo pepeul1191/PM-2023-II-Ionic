@@ -4,18 +4,30 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
 import { IonContent, IonRow, IonPage, IonInput, IonButton, IonLabel } from '@ionic/react';
+import { useHistory } from 'react-router-dom';
 import { validate } from '../services/user_service';
 
 const Login: React.FC = () => {
   const [user, setUser] = useState('');
   const [message, setMessage] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory();
 
   const handleLogin = () => {
     //alert(`Inicio de sesión exitoso. User: ${user}, Contraseña: ${password}`);
     validate(user, password)
       .then(data => {
-        console.log(data)
+        if(data.success){
+          var userInfo = JSON.parse(data.data);
+          console.log(userInfo);
+          localStorage.setItem('userId', userInfo.user_id);
+          localStorage.setItem('memberId', userInfo.member_id);
+          console.log('1 +++++++++++++++++++++++++++++++++++');
+          history.push('/home');
+          console.log(' +++++++++++++++++++++++++++++++++++');
+        }else{
+          alert('usuario y/o contraseña no existen')
+        }
       }).catch(
         error => {
           console.log(error)
