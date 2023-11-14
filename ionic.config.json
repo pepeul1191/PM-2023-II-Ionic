@@ -1,0 +1,7 @@
+{
+  "name": "ulimaGym",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
