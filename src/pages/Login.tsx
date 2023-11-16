@@ -1,13 +1,13 @@
 // src/pages/Home.tsx
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import '../assets/css/login.css';
-import { IonContent, IonRow, IonPage, IonInput, IonButton, IonLabel, IonCol } from '@ionic/react';
-import { useHistory } from 'react-router-dom';
-import { validate } from '../services/user_service';
+import { IonContent, IonRow, IonPage, IonInput, IonButton, IonLabel, IonCol, useIonViewWillLeave } from '@ionic/react';
+import { validate } from '../services/UserService';
 import LogoSVG from '../assets/svg/logo.svg';
 import { IonIcon } from '@ionic/react';
+import { HTTPStdResponse } from '../interfaces/HttpStdResponse'; 
 import { search } from "ionicons/icons";
 
 const Login: React.FC = () => {
@@ -24,15 +24,14 @@ const Login: React.FC = () => {
     if(
       localStorage.getItem('userId') != null && localStorage.getItem('memberId') != null
     ){
-      //history.push('/');
+      history.push('/');
     }
-  });
+  }, []);
 
   const handleLogin = () => {
-    history.push('/');
     //alert(`Inicio de sesión exitoso. User: ${user}, Contraseña: ${password}`);
     validate(user, password)
-      .then(data => {
+      .then((data: HTTPStdResponse) => {
         if(data.success){
           var userInfo = JSON.parse(data.data);
           console.log(userInfo);
@@ -47,8 +46,13 @@ const Login: React.FC = () => {
         }
       }).catch(
         error => {
+          history.push('/sign-in');
           console.log(error)
       });
+  };
+
+  const handleHome = () => {
+    history.replace('/');     
   };
 
   return (
@@ -94,17 +98,15 @@ const Login: React.FC = () => {
               onClick={handleLogin}>
               <span>Iniciar Sesión</span>
             </IonButton>
+            <IonButton 
+              expand="block" 
+              className="btn" 
+              fill="outline"
+              onClick={handleHome}>
+              <span>Ir a Home</span>
+            </IonButton>
           </div>
-          <IonRow 
-          className="ion-justify-content-center title">
-            No tienes una cuenta?<Link to="/sign-in" className="link">Créala aquí</Link>
-          </IonRow>
-        </IonCol> 
-        <br></br>
-        <IonRow 
-          className="ion-justify-content-center title">
-            Olvidaste tu contraseña?<Link to="/reset-password" className="link">Recupérala aquí</Link>
-        </IonRow>
+          </IonCol>
       </IonContent>
     </IonPage>
   )
