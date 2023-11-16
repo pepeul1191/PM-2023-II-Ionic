@@ -1,11 +1,19 @@
-.btn {
-  margin-top: 15px;
-}
-
 .input{
   margin-bottom: 15px;
 }
 
+ion-button.button-native{
+  padding-top: 18px !important; 
+}
+
 .title{
-  margin-bottom: 15px;
+  margin-bottom: 5px;
+  font-size: large;
+}
+
+.logo{
+  color: red;
+  font-size: 100px;
+  stroke: blue;
+  margin-bottom: 20px;
 }

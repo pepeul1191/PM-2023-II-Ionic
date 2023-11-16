@@ -1,21 +1,39 @@
-npm install -g @ionic/cli
+New Project
 
-ionic start miProyecto blank --type=react
+    npm install -g @ionic/cli
 
-cd miProyecto
+    ionic start miProyecto blank --type=react
 
-npm install @capacitor/core @capacitor/cli
+    cd miProyecto
 
-npx cap init
+    npm install @capacitor/core @capacitor/cli
 
-npx cap add android
+    npx cap init
 
-ionic build
+    npx cap add android
 
-npx cap copy
+    ionic build
 
-npx cap doctor
+    npx cap copy
 
-ionic cap run android -l --external
+    npx cap doctor
 
-chrome://inspect/#devices
+Run
+
+    ionic cap run android -l --external
+
+Debug
+
+    chrome://inspect/#devices
+
+SVGs
+
+    npm install -g @ionic/cli ionicons
+    ionicons convert mi-icono.svg --platform=ios --mode=md
+
+---
+
+Fuentes
+
+https://www.npmjs.com/package/vite-plugin-svgr
+https://stackoverflow.com/questions/66209806/ionic-5-react-use-ion-icon-to-embed-custom-svg

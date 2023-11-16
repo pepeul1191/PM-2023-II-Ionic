@@ -1,25 +1,16 @@
 import { useState, useEffect } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './Home.css';
 
 const Home: React.FC = () => {
   const [userId, setUserId] = useState('');
   const [memberId, setMemberId] = useState('');
+  const history = useHistory();
 
   useEffect(() => {
-    // Cuando el componente se monta, intenta recuperar datos de localStorage
-    const storedUserId = localStorage.getItem('userId');
-    const storedMemberId = localStorage.getItem('memberId');
-    console.log(localStorage)
-    // Actualiza el estado con los datos recuperados
-    if (storedUserId) {
-      setUserId(storedUserId);
-    }
-    if (storedMemberId) {
-      setMemberId(storedMemberId);
-    }
+    console.log("HOME");
   }, []);
 
   const handleClick = () => {
