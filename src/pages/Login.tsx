@@ -6,7 +6,7 @@ import './Login.css';
 import { IonContent, IonRow, IonPage, IonInput, IonButton, IonLabel, IonCol } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import { validate } from '../services/user_service';
-import LogoSVG from '../assets/svg/ic_ulima.svg';
+import LogoSVG from '../assets/svg/logo.svg';
 import { IonIcon } from '@ionic/react';
 import { search } from "ionicons/icons";
 
@@ -57,7 +57,7 @@ const Login: React.FC = () => {
         className="ion-padding">
         <IonRow 
           className="ion-justify-content-center">
-            <IonIcon src={search} className='logo' style={{fontSize:32, color: 'red'}}/>
+            <IonIcon src={LogoSVG} className='logo'/>
         </IonRow>
         <IonRow 
           className="ion-justify-content-center title">

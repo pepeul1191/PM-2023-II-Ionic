@@ -28,8 +28,7 @@ Debug
 
 SVGs
 
-    npm install -g @ionic/cli ionicons
-    ionicons convert mi-icono.svg --platform=ios --mode=md
+Usar https://convertio.co/es/ y luego modficar el contido con d y adpatarlo con inksacpe.
 
 ---
 
