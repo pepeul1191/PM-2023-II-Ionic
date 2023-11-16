@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './Login.css';
+import '../assets/css/login.css';
 import { IonContent, IonRow, IonPage, IonInput, IonButton, IonLabel, IonCol } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import { validate } from '../services/user_service';
@@ -67,35 +67,44 @@ const Login: React.FC = () => {
           </IonLabel>
         </IonRow>
         <IonCol>
-          <IonInput 
-            label="Usuario"
-            labelPlacement="floating"
-            fill="outline"
-            className="input" 
-            value={user}
-            placeholder="Ingrse su usuario"
-            onIonChange={(e) => setUser(e.detail.value! as string)}
-          />
-          <IonInput 
-            type="password"
-            label="Contraseña"
-            labelPlacement="floating"
-            className="input" 
-            fill="outline"
-            value={password}
-            placeholder="Ingrse su contraseña"
-            onIonChange={(e) => setPassword(e.detail.value! as string)}
-          />
-          <IonButton 
-            expand="block" 
-            className="btn" 
-            fill="outline"
-            onClick={handleLogin}>
-            <span>Iniciar Sesión</span>
-          </IonButton>
+          <div className="ion-padding">
+            <IonInput 
+              label="Usuario"
+              labelPlacement="floating"
+              fill="outline"
+              className="input" 
+              value={user}
+              placeholder="Ingrse su usuario"
+              onIonChange={(e) => setUser(e.detail.value! as string)}
+            />
+            <IonInput 
+              type="password"
+              label="Contraseña"
+              labelPlacement="floating"
+              className="input" 
+              fill="outline"
+              value={password}
+              placeholder="Ingrse su contraseña"
+              onIonChange={(e) => setPassword(e.detail.value! as string)}
+            />
+            <IonButton 
+              expand="block" 
+              className="btn" 
+              fill="outline"
+              onClick={handleLogin}>
+              <span>Iniciar Sesión</span>
+            </IonButton>
+          </div>
+          <IonRow 
+          className="ion-justify-content-center title">
+            No tienes una cuenta?<Link to="/sign-in" className="link">Créala aquí</Link>
+          </IonRow>
         </IonCol> 
         <br></br>
-        <Link to="/home">Ir a Home</Link>
+        <IonRow 
+          className="ion-justify-content-center title">
+            Olvidaste tu contraseña?<Link to="/reset-password" className="link">Recupérala aquí</Link>
+        </IonRow>
       </IonContent>
     </IonPage>
   )

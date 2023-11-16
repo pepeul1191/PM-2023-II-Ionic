@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import { Link, useHistory } from 'react-router-dom';
-import './Home.css';
+import '../assets/css/home.css';
 
 const Home: React.FC = () => {
   const [userId, setUserId] = useState('');
@@ -11,6 +11,15 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     console.log("HOME");
+    console.log("1 +++++++++++++++++++++++++++++++++++++++++");
+    console.log(localStorage.getItem('userId'))
+    console.log(localStorage.getItem('memberId'))
+    if(
+      localStorage.getItem('userId') == null || localStorage.getItem('memberId') == null
+    ){
+      console.log("2 +++++++++++++++++++++++++++++++++++++++++");
+      history.push('/login');
+    }
   }, []);
 
   const handleClick = () => {
@@ -24,7 +33,8 @@ const Home: React.FC = () => {
       <p>Welcome to the Home page!</p>
       <p>UserId : {userId}</p>
       <p>MemberId : {memberId}</p>
-      <Link to="/login">Ir a Login</Link>
+      <Link to="/reset-password">Ir a Reset Password</Link><br></br><br></br>
+      <Link to="/sign-in">Ir a Sign In</Link>
     </div>
   );
 };

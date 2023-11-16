@@ -6,14 +6,23 @@ ion-button.button-native{
   padding-top: 18px !important; 
 }
 
+.btn{
+  font-weight: 600;
+  font-size: medium;
+}
+
 .title{
   margin-bottom: 5px;
   font-size: large;
 }
 
 .logo{
-  color: red;
   font-size: 100px;
-  stroke: blue;
   margin-bottom: 20px;
+}
+
+.link{
+  margin-left: 5px;
+  text-decoration: none;
+  font-weight: 600;
 }
